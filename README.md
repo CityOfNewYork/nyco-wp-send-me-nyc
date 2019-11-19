@@ -6,7 +6,7 @@ A developer plugin for WordPress that enables sharing website links via SMS or E
 
 **$1** This package uses [Composer Installers](https://github.com/composer/installers) to install the package in the **Must Use** plugins directory (*/wp-content/mu-plugins*):
 
-    composer require nyco/wp-assets
+    composer require nyco/wp-send-me-nyc
 
 *Not using Composer?* Download an archive of the code and drop it into the mu-plugins directory.
 
