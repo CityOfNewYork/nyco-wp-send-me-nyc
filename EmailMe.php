@@ -160,8 +160,6 @@ class EmailMe extends ContactMe {
       $result = $client->sendEmail($config);
 
       if (isset($result['MessageId'])) {
-        debug($result['MessageId']);
-
         return true;
       }
 
