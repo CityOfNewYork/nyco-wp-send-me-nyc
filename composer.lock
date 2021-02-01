@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "38fb3833aefdbc8120c0481d31a993ed",
+    "content-hash": "efe077650cadc1e183600d1a0caa4727",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -816,16 +816,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "6.15.0",
+            "version": "6.16.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "5bea779890315fd46673b4e2e584eba761eb7027"
+                "reference": "28c5dd21e95a5fe5221965ec89863a485c625d43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/5bea779890315fd46673b4e2e584eba761eb7027",
-                "reference": "5bea779890315fd46673b4e2e584eba761eb7027",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/28c5dd21e95a5fe5221965ec89863a485c625d43",
+                "reference": "28c5dd21e95a5fe5221965ec89863a485c625d43",
                 "shasum": ""
             },
             "require": {
@@ -864,9 +864,9 @@
             ],
             "support": {
                 "issues": "https://github.com/twilio/twilio-php/issues",
-                "source": "https://github.com/twilio/twilio-php/tree/6.15.0"
+                "source": "https://github.com/twilio/twilio-php/tree/6.16.1"
             },
-            "time": "2020-12-08T20:38:42+00:00"
+            "time": "2021-01-27T20:57:17+00:00"
         }
     ],
     "packages-dev": [
