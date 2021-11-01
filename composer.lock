@@ -816,16 +816,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "6.15.0",
+            "version": "6.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "5bea779890315fd46673b4e2e584eba761eb7027"
+                "reference": "d60bc2faf10656c100ddfa55d06c33bd8b782957"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/5bea779890315fd46673b4e2e584eba761eb7027",
-                "reference": "5bea779890315fd46673b4e2e584eba761eb7027",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/d60bc2faf10656c100ddfa55d06c33bd8b782957",
+                "reference": "d60bc2faf10656c100ddfa55d06c33bd8b782957",
                 "shasum": ""
             },
             "require": {
@@ -864,9 +864,9 @@
             ],
             "support": {
                 "issues": "https://github.com/twilio/twilio-php/issues",
-                "source": "https://github.com/twilio/twilio-php/tree/6.15.0"
+                "source": "https://github.com/twilio/twilio-php/tree/6.30.0"
             },
-            "time": "2020-12-08T20:38:42+00:00"
+            "time": "2021-10-18T19:13:07+00:00"
         }
     ],
     "packages-dev": [
@@ -934,5 +934,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
