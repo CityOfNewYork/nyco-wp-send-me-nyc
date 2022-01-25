@@ -38,7 +38,7 @@
   ],
   "require": {
     "aws/aws-sdk-php": "^3.208.7",
-    "composer/installers": "^2.0.1",
+    "composer/installers": "^1.12",
     "soundasleep/html2text": "^1.1",
     "twilio/sdk": "^6.32.0",
     "wpackagist-plugin/wp-bitly": "^2.6.0"
