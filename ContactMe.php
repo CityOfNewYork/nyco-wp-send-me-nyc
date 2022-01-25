@@ -147,7 +147,7 @@ class ContactMe {
 
       $share_text = isset($_POST['sharetext']) ? $_POST['sharetext'] : '';
 
-      $url_shortened = $this->shorten($url);
+      $url_shortened = (is_plugin_active('wp-bitly/wp-bitly.php')) ? $this->shorten($url) : $url;
 
       $template = $_POST['template'];
 
@@ -156,41 +156,80 @@ class ContactMe {
       $content = $this->content($url_shortened, $url, $share_text, $template, $lang);
 
       $this->send($to, $content);
-      $this->success($content, $to, $guid, $url);
+      $this->success($to, $guid, $url, $content);
     }
   }
 
   /**
-   * Creates a bit.ly shortened link to provided url. Fails silently.
+   * Creates a bit.ly shortened link to provided url using settings from the
+   * WordPress Bit.ly plugin. Fails silently and returns the original URL.
+   * The Bit.ly API will only work for URLS with production level domains.
    *
    * @param  String  $url  The URL to shorten.
    *
    * @return String        Shortened URL on success, original URL on failure.
    */
   private function shorten($url) {
-    $bitly_shortener = get_option($this->prefix . '_bitly_shortener');
-    $bitly_token = get_option($this->prefix . '_bitly_token');
+    try {
+      /**
+       * TODO: Add method to retrieve existing shortlink from post meta storage (if it is a post).
+       */
 
-    $bitly_shortener = (!empty($bitly_shortener)) ? $bitly_shortener : SMNYC_BITLY_SHORTENER;
-    $bitly_token = (!empty($bitly_token)) ? $bitly_token : SMNYC_BITLY_TOKEN;
+      // Get WP Bit.ly Settings
+      $wpBitlyOptions = wp_parse_args(get_option(WPBITLY_OPTIONS, array(
+        'oauth_token' => '',
+        'default_domain' => '',
+        'default_group' => ''
+      )));
 
-    $encoded = urlencode($url);
+      $token = $wpBitlyOptions['oauth_token'];
+      $domain = $wpBitlyOptions['default_domain'];
+      $group = $wpBitlyOptions['default_group'];
 
-    $request = $bitly_shortener . '?access_token=' . $bitly_token . '&longUrl=' . $encoded;
+      $options = array('long_url' => $url);
 
-    $bitly = wp_remote_get($request);
+      if ($domain) {
+        $options['domain'] = $domain;
+      }
 
-    if (is_wp_error($bitly)) {
+      if ($group) {
+        $options['group_guid'] = $group;
+      }
+
+      $response = wp_remote_post(WPBITLY_BITLY_API . 'shorten', array(
+        'timeout' => '30',
+        'headers' => array(
+          'Authorization' => 'Bearer ' . $token,
+          'Content-Type' => 'application/json'
+        ),
+        'method'  => 'POST',
+        'body' => json_encode($options)
+      ));
+
+      if (is_array($response) && '200' === $response['response']['code']) {
+        debug(json_decode($response['body'], true));
+
+        $body = json_decode($response['body'], true);
+
+        /**
+         * TODO: Add method to store shortlink in post meta storage (if it is a post).
+         */
+
+        return $body['link'];
+      } else {
+        throw new Exception();
+      }
+    } catch (Exception $e) {
+      $msg = __('Send Me NYC: Bit.ly URL shortening skipped for ' . $url);
+
+      // WP debug.log
+      error_log($msg);
+
+      // Send log to Query Monitor
+      do_action('qm/debug', $msg);
+
       return $url;
     }
-
-    $j = json_decode(wp_remote_retrieve_body($bitly));
-
-    if ($j->status_code !== 200) {
-      return $url;
-    }
-
-    return $j->data->url;
   }
 
   /**
@@ -251,12 +290,12 @@ class ContactMe {
   /**
    * Action hook for Stat Collector and sends success response key/value array.
    *
-   * @param   String/Array  $content  Content sent in the email or sms.
    * @param   String        $to       Recipient of message.
    * @param   String        $guid     Session GUID.
    * @param   String        $url      URL to that has been shared.
+   * @param   String/Array  $content  Content sent in the email or sms.
    */
-  protected function success($content = null, $to, $guid, $url) {
+  protected function success($to, $guid, $url, $content = null) {
     /**
      * Action hook for Stat Collector to save message details to the DB
      *
@@ -293,32 +332,6 @@ class ContactMe {
       'message' => $message,
       'retry' => $retry
     ]);
-  }
-
-  /**
-   * Bitly Settings Section.
-   */
-  public function createBitlySection() {
-    $section = $this->prefix . '_bitly_section';
-
-    add_settings_section(
-      $section,
-      'Bitly Settings',
-      [$this, 'bitlyHeadingText'],
-      $this->pagename
-    );
-
-    $this->registerSetting(array(
-      'id' => $this->prefix . '_bitly_shortener',
-      'title' => 'Bitly Shortening API Link',
-      'section' => $section
-    ));
-
-    $this->registerSetting(array(
-      'id' => $this->prefix . '_bitly_token',
-      'title' => 'Bitly Access Token',
-      'section' => $section
-    ));
   }
 
   /**
