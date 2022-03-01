@@ -207,8 +207,6 @@ class ContactMe {
       ));
 
       if (is_array($response) && '200' === $response['response']['code']) {
-        debug(json_decode($response['body'], true));
-
         $body = json_decode($response['body'], true);
 
         /**
