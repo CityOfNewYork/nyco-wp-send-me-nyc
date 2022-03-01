@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e82631cb415619737130a39ffa990d8",
+    "content-hash": "5a9e874b8090f3d04dbfea7d192877dd",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.209.11",
+            "version": "3.211.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "9f9591bff3dc0b2bc5400eb81e2e22228f2e4c95"
+                "reference": "be209936fc1c70bb2e842cad2f3550ebb12d4eb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9f9591bff3dc0b2bc5400eb81e2e22228f2e4c95",
-                "reference": "9f9591bff3dc0b2bc5400eb81e2e22228f2e4c95",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/be209936fc1c70bb2e842cad2f3550ebb12d4eb8",
+                "reference": "be209936fc1c70bb2e842cad2f3550ebb12d4eb8",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.209.11"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.211.0"
             },
-            "time": "2022-01-24T19:15:49+00:00"
+            "time": "2022-02-28T19:50:29+00:00"
         },
         {
             "name": "composer/installers",
@@ -1093,16 +1093,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "6.33.0",
+            "version": "6.35.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "cbe146990fe4fc2bbccf5fa45b61f8218aa99bc1"
+                "reference": "9cfb888bdb2555365ef0b48a81c140394e53ab83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/cbe146990fe4fc2bbccf5fa45b61f8218aa99bc1",
-                "reference": "cbe146990fe4fc2bbccf5fa45b61f8218aa99bc1",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/9cfb888bdb2555365ef0b48a81c140394e53ab83",
+                "reference": "9cfb888bdb2555365ef0b48a81c140394e53ab83",
                 "shasum": ""
             },
             "require": {
@@ -1110,8 +1110,7 @@
             },
             "require-dev": {
                 "guzzlehttp/guzzle": "^6.3 || ^7.0",
-                "phpunit/phpunit": ">=4.5",
-                "theseer/phpdox": "^0.12.0"
+                "phpunit/phpunit": ">=7.0"
             },
             "suggest": {
                 "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
@@ -1133,7 +1132,7 @@
                 }
             ],
             "description": "A PHP wrapper for Twilio's API",
-            "homepage": "http://github.com/twilio/twilio-php",
+            "homepage": "https://github.com/twilio/twilio-php",
             "keywords": [
                 "api",
                 "sms",
@@ -1141,9 +1140,9 @@
             ],
             "support": {
                 "issues": "https://github.com/twilio/twilio-php/issues",
-                "source": "https://github.com/twilio/twilio-php/tree/6.33.0"
+                "source": "https://github.com/twilio/twilio-php/tree/6.35.0"
             },
-            "time": "2022-01-12T19:44:14+00:00"
+            "time": "2022-02-23T21:11:20+00:00"
         },
         {
             "name": "wpackagist-plugin/wp-bitly",
