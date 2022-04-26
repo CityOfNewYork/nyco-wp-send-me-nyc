@@ -2,6 +2,8 @@
 
 namespace SMNYC;
 
+use Exception;
+
 /**
  * Generic parent class for specific contact methods to extend
  * Creates AJAX hooks for you, and automatically includes CSRF protection
